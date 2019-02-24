@@ -21,21 +21,8 @@ Configuration of the environment:
 1. Create a folder to contain the project
 2. Create a subfolder for the jar file
 3. Copy the jar file in the subfolder and the properties file in the main folder
-
-----/
-	|-melpody_dir
-		|-application_jar
-			|jarApplication.jar
-		|-midi
-*			|harmony.mid
-*			|abstract_melody.mid
-		|-output
-*			|outputfile.mid (the output melody of the execution)
-*		|melpody.properties
-	|
-
-* = files
-|- = folder
+4. Create a subfolder called "midi" in the main directory
+5. Create a subfolder called "output" in the main directory
 
 ----------------------------------------------------------------------------------------------
 Execution of the program:
