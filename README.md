@@ -31,9 +31,7 @@ Open the command line in the folder containing the jar file and execute the comm
 
 java -jar nameofthejarfile.jar
 
-**********************************************************************************************
-Remember that midi files must be named as described above in the environment configuration.
-**********************************************************************************************
+<b>Remember that midi files must be named as described above in the environment configuration.</b>
 
 ----------------------------------------------------------------------------------------------
 Properties (file melpody.properties in the main folder of the project)
