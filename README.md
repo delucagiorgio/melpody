@@ -1,6 +1,6 @@
 # Melpody - A Java assistant to melody creation
 
-Giorgio De Luca, 875598 Sound and Acoustic Engineering, Politecnico di Milano
+Giorgio De Luca, 875598 Music and Acoustic Engineering, Politecnico di Milano
 
 
 ----------------------------------------------------------------------------------------------
