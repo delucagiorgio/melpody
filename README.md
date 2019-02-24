@@ -21,7 +21,8 @@ Configuration of the environment:
 1. Create a folder to contain the project
 2. Create a subfolder for the jar file
 3. Copy the jar file in the subfolder and the properties file in the main folder
-4. Create a subfolder called "midi" in the main directory
+4. Create a subfolder called "midi" in the main directory: it is the directory where input
+files must be saved.
 5. Create a subfolder called "output" in the main directory
 
 ----------------------------------------------------------------------------------------------
