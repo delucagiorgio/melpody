@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import melpody.MelpodyMain;
@@ -59,7 +60,7 @@ public class HarmonyMidiTrack extends AbstractMidiTrack {
 			}else if(previousTick != null){
 				scale = getPossibleScaleFromTick(previousTick, modalScaleSelector, scaleTypeSelector);
 			}else {
-				log.severe("NUN CE SEMO");
+				log.log(Level.SEVERE, "Unexpected error");
 			}
 		}
 		
@@ -76,9 +77,9 @@ public class HarmonyMidiTrack extends AbstractMidiTrack {
 		List<MidiNote> notePressedAtTick = new ArrayList<MidiNote>();
 		
 		for(MidiNote mn : midiInformation.getMidiNotes()) {
-			if(mn.getTimestampEventStart() <= tick && mn.getTimestampEventEnd() > tick) {
+			if(mn.getTimestampEventStart() <= tick && mn.getTimestampEventEnd() >= tick) {
 				notePressedAtTick.add(mn);
-			}else if(!notePressedAtTick.isEmpty() && mn.getTimestampEventStart() <= tick && mn.getTimestampEventEnd() > tick){
+			}else if(!notePressedAtTick.isEmpty() && mn.getTimestampEventStart() <= tick && mn.getTimestampEventEnd() >= tick){
 				break;
 			}
 		}

@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Date;
 import java.util.Properties;
+import java.util.logging.ConsoleHandler;
 import java.util.logging.FileHandler;
 import java.util.logging.Level;
 import java.util.logging.LogManager;
@@ -79,7 +80,7 @@ public class MelpodyMain {
 			fis.close();
 		}catch(Exception e) {
 			Logger log = Logger.getLogger(MELPODY_LOGNAME);
-			log.severe(e.getMessage());
+			log.log(Level.SEVERE, e.getMessage(), e);
 		}
 	}
 
@@ -95,10 +96,10 @@ public class MelpodyMain {
 		mainLogger.setLevel(Level.ALL);
 		mainLogger.setUseParentHandlers(false);
 		
-		FileHandler handler = new FileHandler("../MelpodyLog-" + (new Date()).toString());
-//		ConsoleHandler handler = new ConsoleHandler();
-		handler.setLevel(Level.FINE);
-		handler.setFormatter(new SimpleFormatter() {
+		FileHandler fileHandler = new FileHandler("../MelpodyLog-" + (new Date()).toString());
+		ConsoleHandler consoleHandler = new ConsoleHandler();
+		consoleHandler.setLevel(Level.FINE);
+		consoleHandler.setFormatter(new SimpleFormatter() {
 			private static final String format = "[%1$tF %1$tT] [%2$-7s] %3$s %n";
 
 			@Override
@@ -110,7 +111,22 @@ public class MelpodyMain {
 				);
 			}
 		});
-		mainLogger.addHandler(handler);
+		
+		fileHandler.setLevel(Level.FINE);
+		fileHandler.setFormatter(new SimpleFormatter() {
+			private static final String format = "[%1$tF %1$tT] [%2$-7s] %3$s %n";
+
+			@Override
+			public synchronized String format(LogRecord lr) {
+				return String.format(format,
+						new Date(lr.getMillis()),
+						lr.getLevel().getLocalizedName(),
+						lr.getMessage()
+				);
+			}
+		});
+		mainLogger.addHandler(consoleHandler);
+		mainLogger.addHandler(fileHandler);
 	}
 
 	/**

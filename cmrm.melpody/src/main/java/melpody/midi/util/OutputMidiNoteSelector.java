@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.sound.midi.InvalidMidiDataException;
@@ -111,7 +112,7 @@ public final class OutputMidiNoteSelector {
 						
 						noteOutputList.add(previousNoteGenerated);
 					}catch(MelpodySelectionProcessException e) {
-						log.severe(e.getMessage());
+						log.log(Level.SEVERE, e.getMessage(), e);
 						log.info("Removing scale " + possibileScale.getFundamentalNote() + ", " + possibileScale.getScaleType() + ", " + possibileScale.getScale() );
 						chordScaleMap.remove(tickMapChord);
 						log.info("Scale removed from possible scale list = " + removeScaleFromPossibleScaleList(abMelNote, timePossibileScaleMap, possibileScale));
